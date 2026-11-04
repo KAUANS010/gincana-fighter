@@ -4,8 +4,6 @@ Jogo de luta 2D feito para as disciplinas **Análise e Projeto de Sistemas (APS)
 Escolha um guerreiro, enfrente um rival controlado pelo computador, ataque (`A`), defenda (`S`) e use o especial (`D`).
 Quem fizer login pode registrar o recorde no ranking compartilhado.
 
-- **Aplicação publicada:** _preencher com o endereço do deploy (ex.: https://gincana-fighter.vercel.app)_
-- **Repositório:** _preencher com o link do GitHub_
 
 ## Tecnologias
 
@@ -63,7 +61,7 @@ O arquivo `.env` está no `.gitignore`.
 
 ## Imagens e animações dos personagens
 
-Coloque os quadros em `src/assets/sprites/<personagem>/<animacao>/` (ex.: `kael/attack/1.png`).
+Coloque os quadros em `src/assets/sprites/<personagem>/<animacao>/` (ex.: `boto/attack/1.png`).
 O jogo detecta os arquivos sozinho. Detalhes em [`src/assets/sprites/LEIA-ME.md`](src/assets/sprites/LEIA-ME.md).
 Enquanto não houver imagens, aparece um boneco provisório.
 
