@@ -1,9 +1,7 @@
 // Cenários da arena. Para adicionar um novo, inclua um item em CENARIOS e coloque a
 // imagem em src/assets/cenarios/<id>.png (veja LEIA-ME.md nessa pasta).
 export const CENARIOS = [
-  { id: 'templo-da-aurora', nome: 'Templo da aurora', cores: ['#26121c', '#120c12'], lua: true },
-  { id: 'vulcao', nome: 'Vulcão', cores: ['#3a1408', '#160905'], lua: false },
-  { id: 'gruta-de-gelo', nome: 'Gruta de gelo', cores: ['#0f2438', '#08121c'], lua: false },
+  { id: 'quadra', nome: 'Quadra', cores: ['#1d4f8f', '#0b2347'], lua: false },
 ]
 
 const imagens = import.meta.glob('/src/assets/cenarios/*.{png,jpg,jpeg,webp,gif,svg}', {
