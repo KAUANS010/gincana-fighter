@@ -1,0 +1,203 @@
+.character-select-screen {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  background: #000080;
+}
+
+.character-select-back {
+  position: absolute;
+  z-index: 2;
+  top: clamp(14px, 3vh, 28px);
+  left: clamp(14px, 3vw, 32px);
+  min-height: 46px;
+  padding: 10px 18px;
+  border: 2px solid #ffe66b;
+  background: rgba(0, 0, 72, 0.88);
+  color: #fff3a6;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(15px, 1.6vw, 20px);
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0 #651000;
+  cursor: pointer;
+}
+
+.character-select-back:hover,
+.character-select-back:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  background: #11117d;
+}
+
+.character-select-artwork {
+  position: relative;
+  z-index: 0;
+  width: min(100vw, calc(100svh * 768 / 448));
+  aspect-ratio: 768 / 448;
+  overflow: hidden;
+  background: #000080;
+  animation: aparecer 0.5s ease;
+}
+
+.character-select-background {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+}
+
+.map-animation-area {
+  position: absolute;
+  z-index: 4;
+  top: 10%;
+  left: 24%;
+  width: 44%;
+  height: 72%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.map-pointer {
+  position: absolute;
+  z-index: 4;
+  display: block;
+  width: 8%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.map-pointer-moving {
+  animation: map-pointer-drive 2s ease-in-out forwards;
+}
+
+.map-transition-fade {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  background: #000;
+  animation: map-screen-darken 2s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes map-pointer-drive {
+  to {
+    left: var(--map-target-x);
+    top: var(--map-target-y);
+  }
+}
+
+@keyframes map-screen-darken {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.character-select-player {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.character-select-name {
+  position: absolute;
+  top: calc(100% - min(27vw, 380px) - 4vh);
+  width: min(30vw, 420px);
+  aspect-ratio: 16 / 1;
+  overflow: hidden;
+  transform: translateX(-13%);
+}
+
+.character-select-name img {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.character-select-name.name-boto img {
+  transform: translateY(-39.2%);
+}
+
+.character-select-name.name-lobisomem img {
+  transform: translateY(-79.8%);
+}
+
+.character-select-player.player-one .character-select-name {
+  left: 0;
+}
+
+.character-select-player.player-two .character-select-name {
+  right: 0;
+}
+
+.character-select-portrait {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  width: min(27vw, 380px);
+  height: min(70vh, 540px);
+  object-fit: contain;
+  object-position: bottom;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+.character-select-player.player-one .character-select-portrait {
+  left: 0;
+  object-position: bottom left;
+}
+
+.character-select-player.player-two .character-select-portrait {
+  right: 0;
+  object-position: bottom right;
+  transform: scaleX(-1);
+}
+
+.character-select-options {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.character-select-hover-target {
+  position: absolute;
+  top: 84.4%;
+  z-index: 2;
+  width: 7.8%;
+  height: 13.5%;
+  pointer-events: auto;
+}
+
+.character-choice {
+  position: absolute;
+  top: 84.4%;
+  width: 7.8%;
+  height: 13.5%;
+  box-sizing: border-box;
+  border: 3px solid;
+  pointer-events: none;
+}
+
+.character-choice.player-one {
+  border-color: #ef2938;
+}
+
+.character-choice.player-two {
+  border-color: #39d9ff;
+}
+

@@ -1,0 +1,85 @@
+.versus-screen {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.versus-artwork {
+  position: relative;
+  width: min(100vw, calc(100svh * 384 / 224));
+  aspect-ratio: 384 / 224;
+  overflow: hidden;
+  background: #000080;
+  animation: aparecer 0.5s ease;
+}
+
+.versus-background {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+}
+
+.versus-portrait {
+  position: absolute;
+  z-index: 1;
+  bottom: 40%;
+  display: block;
+  width: 20%;
+  height: 42%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 5px 0 rgba(0, 0, 0, 0.6));
+}
+
+.versus-player.player-one .versus-portrait {
+  left: 25%;
+  transform: translateX(-50%);
+}
+
+.versus-player.player-two .versus-portrait {
+  left: 75%;
+  transform: translateX(-50%) scaleX(-1);
+}
+
+.versus-name {
+  position: absolute;
+  z-index: 2;
+  top: 62%;
+  width: 44%;
+  aspect-ratio: 16 / 1;
+  overflow: hidden;
+  transform: translateX(-50%);
+}
+
+.versus-name img {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.versus-name.name-boto img {
+  transform: translate(-12.9%, -39.2%);
+}
+
+.versus-name.name-lobisomem img {
+  transform: translate(-14.4%, -79.8%);
+}
+
+.versus-player.player-one .versus-name {
+  left: 25%;
+}
+
+.versus-player.player-two .versus-name {
+  left: 75%;
+}
+

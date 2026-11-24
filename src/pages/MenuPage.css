@@ -1,0 +1,83 @@
+.menu-screen {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-screen {
+  display: grid;
+  place-items: center;
+  background: #000;
+  outline: none;
+}
+
+.menu-transition {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+}
+
+.menu-artwork {
+  position: relative;
+  width: min(100vw, calc(100svh * 1.713));
+  aspect-ratio: 1642 / 958;
+  overflow: hidden;
+  background: #000080;
+}
+
+.menu-background {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+}
+
+.menu-options {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.menu-option {
+  position: absolute;
+  left: 39.5%;
+  width: 23.5%;
+  height: 5%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.menu-pointer {
+  position: absolute;
+  top: 50%;
+  left: -22%;
+  display: block;
+  width: 20%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  image-rendering: pixelated;
+  visibility: hidden;
+  transform: translateY(-50%);
+}
+
+.menu-option.selected .menu-pointer {
+  visibility: visible;
+}
+
+.menu-option:focus-visible {
+  outline: none;
+}
+
+@media (max-width: 600px) {
+
+  .menu-option {
+    left: 39.5%;
+    width: 23.5%;
+  }
+}

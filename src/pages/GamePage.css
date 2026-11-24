@@ -1,0 +1,410 @@
+.fight-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #05070c;
+  color: #fff4c2;
+  font-family: "Courier New", monospace;
+}
+
+.fight-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #05070c;
+}
+
+.fight-world {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  transform-origin: top left;
+  will-change: transform;
+}
+
+.fight-stage-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.fight-stage-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  image-rendering: pixelated;
+}
+
+.fight-stage-image.stage-gramado img {
+  object-position: center 30%;
+}
+
+.fight-stage-image.stage-quadra img {
+  object-position: center 50%;
+}
+
+.fight-stage-image.stage-palco img {
+  object-position: center 35%;
+}
+
+.fight-floor {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  border-top: 2px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+}
+
+.arena-fighter {
+  position: absolute;
+  z-index: 2;
+  top: 745px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  transform: translateX(-50%);
+  transform-origin: center bottom;
+  will-change: left;
+}
+
+.arena-fighter.is-werewolf-airborne {
+  transform: translate(-50%, -380px);
+}
+
+.arena-fighter.is-knockback-falling {
+  animation: fighter-knockback-fall 760ms ease-out both;
+}
+
+.arena-fighter.is-defeat-falling {
+  animation-duration: 4000ms;
+}
+
+.arena-fighter img {
+  display: block;
+  width: auto;
+  height: 100%;
+  max-width: none;
+  flex: 0 0 auto;
+  object-position: center bottom;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.7));
+  user-select: none;
+}
+
+.arena-fighter.is-jumping {
+  animation: fighter-jump 650ms ease-out;
+}
+
+.botouken-projectile {
+  position: absolute;
+  z-index: 2;
+  width: 170px;
+  height: auto;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes fighter-jump {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+
+  45%, 60% {
+    transform: translate(-50%, -350px);
+  }
+}
+
+@keyframes fighter-knockback-fall {
+  0%, 62%, 100% {
+    transform: translate(-50%, 0);
+  }
+
+  20% {
+    transform: translate(-50%, -54px);
+  }
+}
+
+.fight-hud {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  gap: 8px;
+  padding: clamp(12px, 2vw, 24px);
+  background: linear-gradient(rgba(0, 0, 0, 0.85), transparent);
+  pointer-events: none;
+}
+
+.fight-scoreboard {
+  display: grid;
+  width: min(100%, 1100px);
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 32px);
+}
+
+.fight-player-status {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 2px solid #ffe66b;
+  background: rgba(4, 9, 22, 0.88);
+  color: #fff3a6;
+  font-size: clamp(11px, 1.5vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: 1px 2px #651000;
+}
+
+.fight-player-status strong {
+  justify-self: end;
+}
+
+.fight-health-bar {
+  height: clamp(12px, 1.8vw, 20px);
+  overflow: hidden;
+  border: 2px solid #161616;
+  background: #3a1014;
+}
+
+.fight-health-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #58df54, #d6ff66);
+  transition: width 0.18s ease;
+}
+
+.player-two-status .fight-health-bar {
+  direction: rtl;
+}
+
+.fight-clock {
+  min-width: clamp(52px, 7vw, 76px);
+  padding: 8px;
+  border: 3px solid #ffe66b;
+  background: #651000;
+  color: #fff3a6;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(25px, 4vw, 42px);
+  line-height: 1;
+  text-align: center;
+  text-shadow: 2px 2px #160400;
+}
+
+.fight-stage-label {
+  padding: 4px 12px;
+  background: rgba(4, 9, 22, 0.76);
+  color: #ffe66b;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(12px, 1.7vw, 18px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fight-round-status {
+  margin: 0;
+  padding: 4px 12px;
+  background: rgba(4, 9, 22, 0.76);
+  color: #fff3a6;
+  font-size: clamp(12px, 1.5vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.fight-message {
+  max-width: min(90vw, 680px);
+  padding: 5px 12px;
+  background: rgba(0, 0, 0, 0.58);
+  color: #fff;
+  font-size: clamp(11px, 1.4vw, 15px);
+  text-align: center;
+}
+
+.fight-controls {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #fff4c2;
+  font-size: clamp(10px, 1.2vw, 14px);
+  text-shadow: 1px 2px #000;
+  pointer-events: none;
+}
+
+.fight-controls strong {
+  color: #ffe66b;
+}
+
+.fight-result-backdrop {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background: #000;
+}
+
+.fight-pause-overlay {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.82);
+  color: #ffe66b;
+  font-family: Impact, "Arial Black", sans-serif;
+  text-shadow: 4px 4px #651000;
+}
+
+.fight-pause-overlay p {
+  margin: 0;
+  font-size: clamp(64px, 14vw, 150px);
+}
+
+.fight-pause-overlay span {
+  font-size: clamp(16px, 3vw, 28px);
+}
+
+.fight-result-transition {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background: #000;
+  animation: result-fade-to-black 900ms ease both;
+}
+
+.victory-screen,
+.revenge-screen {
+  overflow: hidden;
+  animation: result-reveal 900ms ease both;
+}
+
+.victory-background,
+.revenge-background-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  image-rendering: pixelated;
+}
+
+.result-fighter {
+  position: absolute;
+  top: 34%;
+  width: min(36vw, 440px);
+  height: min(78vh, 650px);
+  object-fit: contain;
+  object-position: bottom;
+  image-rendering: pixelated;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.result-loser,
+.revenge-fighter {
+  left: 5vw;
+}
+
+.result-winner {
+  right: 5vw;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+.revenge-click-target {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: end center;
+  padding: 32px;
+  border: 0;
+  background: transparent;
+  color: #fff3a6;
+  font-family: Impact, "Arial Black", sans-serif;
+  font-size: clamp(18px, 3vw, 32px);
+  letter-spacing: 0.08em;
+  text-shadow: 3px 3px #651000;
+  cursor: pointer;
+}
+
+.revenge-click-target span {
+  padding: 10px 18px;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.revenge-menu-button {
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  right: 16px;
+  padding: 10px 14px;
+  border: 2px solid #ffe66b;
+  background: rgba(0, 0, 0, 0.72);
+  color: #fff3a6;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+}
+
+@keyframes result-fade-to-black {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes result-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .fight-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .fight-player-status {
+    padding: 7px;
+    font-size: 9px;
+  }
+
+  .fight-health-bar {
+    height: 10px;
+  }
+
+  .fight-round-status {
+    font-size: 10px;
+  }
+}
