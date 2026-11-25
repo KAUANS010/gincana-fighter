@@ -23,6 +23,7 @@ export function useGameFlow() {
     if (!video) return;
 
     video.muted = false;
+    video.volume = 1;
     video.currentTime = 0;
     video.play()
       .then(() => setIntroPhase('video'))
